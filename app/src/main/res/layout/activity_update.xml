@@ -11,120 +11,90 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="DeleteRecord"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="135dp"
+        android:onClick="UpdateRecord"
         android:text="Submit"
-        tools:layout_editor_absoluteX="73dp"
-        tools:layout_editor_absoluteY="447dp" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="Clear"
-        android:text="Clear"
-        tools:layout_editor_absoluteX="243dp"
-        tools:layout_editor_absoluteY="447dp" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Last Name: "
-        tools:layout_editor_absoluteX="62dp"
-        tools:layout_editor_absoluteY="30dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/mName" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="31dp"
         android:text="New First Name: "
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="291dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/fName"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
         android:text="New Last Name: "
-        tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="246dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/lName"
+        app:layout_constraintEnd_toStartOf="@+id/lName"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Middle Name: "
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="336dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/mName"
+        app:layout_constraintEnd_toStartOf="@+id/mName"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView2"
+    <EditText
+        android:id="@+id/fName"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Old First Name: "
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="75dp" />
+        android:layout_height="0dp"
+        android:layout_marginBottom="12dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintStart_toStartOf="@+id/mName" />
 
-    <TextView
-        android:id="@+id/textView3"
+    <EditText
+        android:id="@+id/mName"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Old Middle Name: "
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="134dp" />
+        android:layout_height="46dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="141dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/names" />
 
     <EditText
         android:id="@+id/lName"
         android:layout_width="wrap_content"
         android:layout_height="46dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="47dp"
         android:ems="10"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="138dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/fName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/names" />
 
-    <EditText
-        android:id="@+id/lName3"
-        android:layout_width="wrap_content"
-        android:layout_height="46dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="138dp"
-        tools:layout_editor_absoluteY="278dp" />
-
-    <EditText
-        android:id="@+id/lName4"
-        android:layout_width="wrap_content"
-        android:layout_height="46dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="138dp"
-        tools:layout_editor_absoluteY="324dp" />
-
-    <EditText
-        android:id="@+id/lName2"
-        android:layout_width="wrap_content"
-        android:layout_height="46dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="138dp"
-        tools:layout_editor_absoluteY="232dp" />
-
-    <EditText
-        android:id="@+id/fName"
-        android:layout_width="wrap_content"
+    <Spinner
+        android:id="@+id/names"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="138dp"
-        tools:layout_editor_absoluteY="62dp" />
-
-    <EditText
-        android:id="@+id/mName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="138dp"
-        tools:layout_editor_absoluteY="122dp" />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
