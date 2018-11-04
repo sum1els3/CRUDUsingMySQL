@@ -6,6 +6,7 @@ import android.provider.Contacts;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -29,6 +30,25 @@ public class UpdateAct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
+        ((Spinner) findViewById(R.id.names)).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String name = ((Spinner) findViewById(R.id.names)).getSelectedItem().toString();
+                for (Person person : people) {
+                    if(name.contains(person.lName) && name.contains(person.fName) && name.contains(person.lName))
+                    {
+                        ((EditText) findViewById(R.id.lName)).setText(person.lName);
+                        ((EditText) findViewById(R.id.fName)).setText(person.fName);
+                        ((EditText) findViewById(R.id.mName)).setText(person.mName);
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     @Override
@@ -54,6 +74,7 @@ public class UpdateAct extends AppCompatActivity {
                 names.add(person.GetName());
             }
             ArrayAdapter adapter = new ArrayAdapter(UpdateAct.this, R.layout.support_simple_spinner_dropdown_item, names);
+            ((Spinner) findViewById(R.id.names)).setAdapter(null);
             ((Spinner) findViewById(R.id.names)).setAdapter(adapter);
         }
     }
@@ -65,11 +86,11 @@ public class UpdateAct extends AppCompatActivity {
             try{
                 Connection con = (Connection) DriverManager.getConnection(MySQLConnectionString.DatabaseConnection);
                 try {
-                    PreparedStatement command = (PreparedStatement) con.prepareStatement("SELECT lName, fName, mName FROM person");
+                    PreparedStatement command = (PreparedStatement) con.prepareStatement("SELECT personID, lName, fName, mName FROM person");
                     ResultSet result = command.executeQuery();
                     while(result.next())
                     {
-                        people.add(new Person(result.getString(1), result.getString(2), result.getString(3)));
+                        people.add(new Person(result.getInt(1), result.getString(2), result.getString(3), result.getString(4)));
                     }
                     command.close();
                     con.close();
@@ -127,13 +148,11 @@ public class UpdateAct extends AppCompatActivity {
             try{
                 Connection con = (Connection) DriverManager.getConnection(MySQLConnectionString.DatabaseConnection);
                 try {
-                    PreparedStatement command = (PreparedStatement) con.prepareStatement("UPDATE SET lName = ?, fName = ?, mName = ? FROM person WHERE lName = ? AND fName = ? AND mName = ?");
+                    PreparedStatement command = (PreparedStatement) con.prepareStatement("UPDATE person SET lName = ?, fName = ?, mName = ? WHERE personID = ?");
                     command.setString(1, lName);
                     command.setString(2, fName);
                     command.setString(3, mName);
-                    command.setString(4, person.lName);
-                    command.setString(5, person.fName);
-                    command.setString(6, person.mName);
+                    command.setString(4, person.GetID() + "");
                     command.executeUpdate();
                     command.close();
                     con.close();

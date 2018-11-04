@@ -22,9 +22,11 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="31dp"
+        android:layout_marginEnd="1dp"
         android:text="New First Name: "
         app:layout_constraintBaseline_toBaselineOf="@+id/fName"
+        app:layout_constraintEnd_toStartOf="@+id/fName"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -52,11 +54,13 @@
         android:id="@+id/fName"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="11dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
-        app:layout_constraintStart_toStartOf="@+id/mName" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView4" />
 
     <EditText
         android:id="@+id/mName"
@@ -78,7 +82,7 @@
         android:layout_height="46dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="3dp"
-        android:layout_marginBottom="47dp"
+        android:layout_marginBottom="48dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="@+id/fName"
