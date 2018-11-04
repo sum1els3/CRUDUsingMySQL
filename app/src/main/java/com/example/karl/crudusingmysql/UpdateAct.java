@@ -20,8 +20,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class UpdateAct extends AppCompatActivity {
+    public Person persons;
     private ArrayList<Person> people = new ArrayList<>();
-    private Person person;
     private String lName;
     private String fName;
     private String mName;
@@ -30,6 +30,7 @@ public class UpdateAct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
+
         ((Spinner) findViewById(R.id.names)).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -37,6 +38,7 @@ public class UpdateAct extends AppCompatActivity {
                 for (Person person : people) {
                     if(name.contains(person.lName) && name.contains(person.fName) && name.contains(person.lName))
                     {
+                        persons = person;
                         ((EditText) findViewById(R.id.lName)).setText(person.lName);
                         ((EditText) findViewById(R.id.fName)).setText(person.fName);
                         ((EditText) findViewById(R.id.mName)).setText(person.mName);
@@ -144,7 +146,7 @@ public class UpdateAct extends AppCompatActivity {
                     command.setString(1, lName);
                     command.setString(2, fName);
                     command.setString(3, mName);
-                    command.setString(4, person.GetID() + "");
+                    command.setString(4, persons.GetID() + "");
                     command.executeUpdate();
                     command.close();
                     con.close();
