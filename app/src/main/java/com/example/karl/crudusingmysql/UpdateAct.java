@@ -110,14 +110,6 @@ public class UpdateAct extends AppCompatActivity {
 
     public void UpdateRecord(View v)
     {
-        String name = ((Spinner) findViewById(R.id.names)).getSelectedItem().toString();
-        for (Person person : people) {
-            if(name.contains(person.lName) && name.contains(person.fName) && name.contains(person.lName))
-            {
-                this.person = person;
-            }
-        }
-
         lName = ((EditText) findViewById(R.id.lName)).getText().toString();
         fName = ((EditText) findViewById(R.id.fName)).getText().toString();
         mName = ((EditText) findViewById(R.id.mName)).getText().toString();
